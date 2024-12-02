@@ -178,7 +178,7 @@ const UserProfile = () => {
                       <Calendar className="w-4 h-4 mr-1" />
                       {new Date(project.startDate).toLocaleDateString()}
                     </span>
-                    {project.githubUrl && (
+                    {/* {project.githubUrl && (
                       <a
                         href={project.githubUrl}
                         target="_blank"
@@ -188,7 +188,29 @@ const UserProfile = () => {
                         <Github className="w-4 h-4 mr-1" />
                         View Code
                       </a>
-                    )}
+                    )} */}
+                     {project.githubUrl && project.liveUrl && (
+                        <div className="flex gap-5">
+                          <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center text-blue-600 hover:text-blue-800"
+                          >
+                            <Github className="w-4 h-4 mr-1" />
+                            View Code
+                          </a>
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center text-blue-600 hover:text-blue-800"
+                          >
+                            <Globe className="w-4 h-4 mr-1" />
+                            Live Demo
+                          </a>
+                        </div>
+                      )}
                   </div>
                 </div>
               ))}

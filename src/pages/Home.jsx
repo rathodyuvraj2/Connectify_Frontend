@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import {
-  BookOpen, Users, Award, Brain, Clock, Shield,
-  ChevronDown, Star, CheckCircle, PlayCircle
-} from 'lucide-react';
-
+  BookOpen,
+  Users,
+  Award,
+  Brain,
+  Clock,
+  Shield,
+  ChevronDown,
+  Star,
+  CheckCircle,
+  PlayCircle,
+} from "lucide-react";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -15,19 +22,60 @@ const Home = () => {
   const userRoute = (user) => {
     if (user) {
       switch (user.role) {
-        case 'student':
+        case "student":
           // return (user.isClubLead ? '/club-lead-dashboard' : '/student-dashboard');
-          return ('/student-dashboard');
-        case 'professor':
-          return (user.isProctor ? '/proctor-dashboard' : '/professor-dashboard');
-          // return ('/professor-dashboard');
-        case 'admin':
-          return ('/admin-dashboard');
+          return "/student-dashboard";
+        case "professor":
+          return user.isProctor ? "/proctor-dashboard" : "/professor-dashboard";
+        // return ('/professor-dashboard');
+        case "admin":
+          return "/admin-dashboard";
         default:
-          return ('/');
+          return "/";
       }
     }
-  }
+  };
+
+  // const renderAuthButtons = () => {
+  //   if (user) {
+  //     return (
+  //       <div className="flex items-center space-x-4">
+  //         <Link
+  //           to={userRoute(user)}
+  //           className="px-4 py-2 rounded-md text-gray-600 hover:text-gray-900 transition-colors"
+  //         >
+  //           Dashboard
+  //         </Link>
+  //         <button
+  //           onClick={() => {
+  //             logout();
+  //             navigate('/');
+  //           }}
+  //           className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
+  //         >
+  //           Logout
+  //         </button>
+  //       </div>
+  //     );
+  //   }
+
+  //   return (
+  //     <div className="flex items-center space-x-4">
+  //       <Link
+  //         to="/login"
+  //         className="px-4 py-2 rounded-md text-gray-600 hover:text-gray-900 transition-colors"
+  //       >
+  //         Login
+  //       </Link>
+  //       <Link
+  //         to="/register"
+  //         className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+  //       >
+  //         Get Started
+  //       </Link>
+  //     </div>
+  //   );
+  // };
 
   const renderAuthButtons = () => {
     if (user) {
@@ -39,10 +87,16 @@ const Home = () => {
           >
             Dashboard
           </Link>
+          <Link
+            to="/about"
+            className="px-4 py-2 rounded-md bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors"
+          >
+            About Us
+          </Link>
           <button
             onClick={() => {
               logout();
-              navigate('/');
+              navigate("/");
             }}
             className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
           >
@@ -55,16 +109,16 @@ const Home = () => {
     return (
       <div className="flex items-center space-x-4">
         <Link
-          to="/login"
-          className="px-4 py-2 rounded-md text-gray-600 hover:text-gray-900 transition-colors"
+          to="/about"
+          className="px-4 py-2 rounded-md bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors"
         >
-          Login
+          About Us
         </Link>
         <Link
-          to="/register"
+          to="/login"
           className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
         >
-          Get Started
+          Login
         </Link>
       </div>
     );
@@ -77,7 +131,9 @@ const Home = () => {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <BookOpen className="h-8 w-8 text-blue-600" />
-              <span className="ml-2 text-xl font-bold text-gray-800">EduLearn</span>
+              <span className="ml-2 text-xl font-bold text-gray-800">
+                EduLearn
+              </span>
             </div>
             {renderAuthButtons()}
           </div>
@@ -85,7 +141,7 @@ const Home = () => {
       </nav>
 
       {/* Hero Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24">
+      {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24">
         <div className="text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 mb-8">
             Learning Made <span className="text-blue-600">Fun</span> and <span className="text-blue-600">Easy</span>
@@ -108,6 +164,32 @@ const Home = () => {
             </Link>
           </div>
         </div>
+      </div> */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24">
+        <div className="text-center">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 mb-8">
+            Excellence in <span className="text-blue-600">Education</span> and{" "}
+            <span className="text-blue-600">Innovation</span>
+          </h1>
+          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            Empowering students and faculty through advanced learning management
+            and academic collaboration.
+          </p>
+          <div className="flex justify-center space-x-4">
+            <Link
+              to="/about"
+              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              Discover More
+            </Link>
+            <Link
+              to="/contact"
+              className="px-8 py-4 border-2 border-gray-300 text-gray-600 rounded-lg hover:border-blue-600 hover:text-blue-600 transition-colors"
+            >
+              Contact Us
+            </Link>
+          </div>
+        </div>
       </div>
 
       {/* Features Section */}
@@ -121,23 +203,31 @@ const Home = () => {
               {
                 icon: <Users className="h-8 w-8 text-blue-600" />,
                 title: "Interactive Learning",
-                description: "Learn together with friends and get help from friendly teachers!"
+                description:
+                  "Learn together with friends and get help from friendly teachers!",
               },
               {
                 icon: <Brain className="h-8 w-8 text-blue-600" />,
                 title: "Smart Progress Tracking",
-                description: "Watch your knowledge grow with fun progress charts and rewards!"
+                description:
+                  "Watch your knowledge grow with fun progress charts and rewards!",
               },
               {
                 icon: <Clock className="h-8 w-8 text-blue-600" />,
                 title: "Learn at Your Pace",
-                description: "Take your time or zoom ahead - you choose how fast to learn!"
-              }
+                description:
+                  "Take your time or zoom ahead - you choose how fast to learn!",
+              },
             ].map((feature, index) => (
-              <div key={index} className="p-6 bg-blue-50 rounded-xl hover:shadow-lg transition-shadow">
+              <div
+                key={index}
+                className="p-6 bg-blue-50 rounded-xl hover:shadow-lg transition-shadow"
+              >
                 <div className="flex flex-col items-center text-center">
                   {feature.icon}
-                  <h3 className="mt-4 text-xl font-semibold text-gray-900">{feature.title}</h3>
+                  <h3 className="mt-4 text-xl font-semibold text-gray-900">
+                    {feature.title}
+                  </h3>
                   <p className="mt-2 text-gray-600">{feature.description}</p>
                 </div>
               </div>
@@ -157,23 +247,30 @@ const Home = () => {
               {
                 title: "Students",
                 icon: <Award className="h-12 w-12 text-blue-600" />,
-                description: "Discover exciting lessons, take fun quizzes, and earn cool badges!"
+                description:
+                  "Discover exciting lessons, take fun quizzes, and earn cool badges!",
               },
               {
                 title: "Teachers",
                 icon: <Users className="h-12 w-12 text-blue-600" />,
-                description: "Create engaging content and watch your students grow!"
+                description:
+                  "Create engaging content and watch your students grow!",
               },
               {
                 title: "Proctors",
                 icon: <Shield className="h-12 w-12 text-blue-600" />,
-                description: "Ensure fair assessments in a secure environment."
-              }
+                description: "Ensure fair assessments in a secure environment.",
+              },
             ].map((role, index) => (
-              <div key={index} className="p-6 border-2 border-gray-200 rounded-xl hover:border-blue-600 transition-colors">
+              <div
+                key={index}
+                className="p-6 border-2 border-gray-200 rounded-xl hover:border-blue-600 transition-colors"
+              >
                 <div className="flex flex-col items-center text-center">
                   {role.icon}
-                  <h3 className="mt-4 text-xl font-semibold text-gray-900">{role.title}</h3>
+                  <h3 className="mt-4 text-xl font-semibold text-gray-900">
+                    {role.title}
+                  </h3>
                   <p className="mt-2 text-gray-600">{role.description}</p>
                 </div>
               </div>
@@ -190,10 +287,12 @@ const Home = () => {
               { number: "50,000+", label: "Happy Students" },
               { number: "1,000+", label: "Expert Teachers" },
               { number: "5,000+", label: "Courses" },
-              { number: "98%", label: "Satisfaction Rate" }
+              { number: "98%", label: "Satisfaction Rate" },
             ].map((stat, index) => (
               <div key={index} className="p-4">
-                <div className="text-3xl md:text-4xl font-bold mb-2">{stat.number}</div>
+                <div className="text-3xl md:text-4xl font-bold mb-2">
+                  {stat.number}
+                </div>
                 <div className="text-blue-100">{stat.label}</div>
               </div>
             ))}
@@ -213,23 +312,26 @@ const Home = () => {
                 name: "Sarah Johnson",
                 role: "Student",
                 image: "/api/placeholder/64/64",
-                quote: "Learning has never been this fun! I love earning badges and competing with my friends.",
-                rating: 5
+                quote:
+                  "Learning has never been this fun! I love earning badges and competing with my friends.",
+                rating: 5,
               },
               {
                 name: "Prof. Michael Chen",
                 role: "Teacher",
                 image: "/api/placeholder/64/64",
-                quote: "The teaching tools are fantastic. I can easily track my students' progress and provide timely feedback.",
-                rating: 5
+                quote:
+                  "The teaching tools are fantastic. I can easily track my students' progress and provide timely feedback.",
+                rating: 5,
               },
               {
                 name: "Emily Rodriguez",
                 role: "Parent",
                 image: "/api/placeholder/64/64",
-                quote: "My children's grades have improved significantly since using this platform. It's worth every penny!",
-                rating: 5
-              }
+                quote:
+                  "My children's grades have improved significantly since using this platform. It's worth every penny!",
+                rating: 5,
+              },
             ].map((testimonial, index) => (
               <div key={index} className="bg-white p-6 rounded-xl shadow-md">
                 <div className="flex items-center mb-4">
@@ -240,13 +342,20 @@ const Home = () => {
                     className="w-12 h-12 rounded-full"
                   />
                   <div className="ml-4">
-                    <div className="font-semibold text-gray-900">{testimonial.name}</div>
-                    <div className="text-gray-600 text-sm">{testimonial.role}</div>
+                    <div className="font-semibold text-gray-900">
+                      {testimonial.name}
+                    </div>
+                    <div className="text-gray-600 text-sm">
+                      {testimonial.role}
+                    </div>
                   </div>
                 </div>
                 <div className="flex mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 mt-3 text-yellow-400 fill-current" />
+                    <Star
+                      key={i}
+                      className="w-5 h-5 mt-3 text-yellow-400 fill-current"
+                    />
                   ))}
                 </div>
                 <p className="text-gray-600 italic">"{testimonial.quote}"</p>
@@ -267,25 +376,28 @@ const Home = () => {
               {
                 icon: <Users className="h-8 w-8 text-blue-600" />,
                 title: "Sign Up",
-                description: "Create your account in minutes"
+                description: "Create your account in minutes",
               },
               {
                 icon: <BookOpen className="h-8 w-8 text-blue-600" />,
                 title: "Choose Courses",
-                description: "Browse our extensive course catalog"
+                description: "Browse our extensive course catalog",
               },
               {
                 icon: <PlayCircle className="h-8 w-8 text-blue-600" />,
                 title: "Start Learning",
-                description: "Learn at your own pace"
+                description: "Learn at your own pace",
               },
               {
                 icon: <Award className="h-8 w-8 text-blue-600" />,
                 title: "Earn Certificates",
-                description: "Get recognized for your achievements"
-              }
+                description: "Get recognized for your achievements",
+              },
             ].map((step, index) => (
-              <div key={index} className="flex flex-col items-center text-center">
+              <div
+                key={index}
+                className="flex flex-col items-center text-center"
+              >
                 <div className="relative">
                   <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
                     {step.icon}
@@ -294,7 +406,9 @@ const Home = () => {
                     <div className="hidden md:block absolute top-8 left-full w-full border-t-2 border-blue-200" />
                   )}
                 </div>
-                <h3 className="mt-4 text-xl font-semibold text-gray-900">{step.title}</h3>
+                <h3 className="mt-4 text-xl font-semibold text-gray-900">
+                  {step.title}
+                </h3>
                 <p className="mt-2 text-gray-600">{step.description}</p>
               </div>
             ))}
@@ -312,36 +426,41 @@ const Home = () => {
             {[
               {
                 question: "How much does it cost?",
-                answer: "We offer flexible pricing plans starting from free tier for basic features. Premium plans start at $9.99/month with additional features."
+                answer:
+                  "We offer flexible pricing plans starting from free tier for basic features. Premium plans start at $9.99/month with additional features.",
               },
               {
                 question: "Can I try it for free?",
-                answer: "Yes! We offer a 14-day free trial with full access to all features. No credit card required."
+                answer:
+                  "Yes! We offer a 14-day free trial with full access to all features. No credit card required.",
               },
               {
                 question: "Is there a mobile app?",
-                answer: "Yes, our platform is available on both iOS and Android devices. You can learn anywhere, anytime!"
+                answer:
+                  "Yes, our platform is available on both iOS and Android devices. You can learn anywhere, anytime!",
               },
               {
                 question: "How do I get started?",
-                answer: "Simply click the 'Get Started' button, create your account, and you'll be learning in minutes!"
-              }
+                answer:
+                  "Simply click the 'Get Started' button, create your account, and you'll be learning in minutes!",
+              },
             ].map((faq, index) => (
               <div key={index} className="bg-white rounded-lg shadow-sm">
                 <button
                   className="w-full px-6 py-4 text-left flex justify-between items-center"
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
                 >
-                  <span className="font-semibold text-gray-900">{faq.question}</span>
+                  <span className="font-semibold text-gray-900">
+                    {faq.question}
+                  </span>
                   <ChevronDown
-                    className={`w-5 h-5 text-gray-500 transition-transform ${openFaq === index ? 'transform rotate-180' : ''
-                      }`}
+                    className={`w-5 h-5 text-gray-500 transition-transform ${
+                      openFaq === index ? "transform rotate-180" : ""
+                    }`}
                   />
                 </button>
                 {openFaq === index && (
-                  <div className="px-6 pb-4 text-gray-600">
-                    {faq.answer}
-                  </div>
+                  <div className="px-6 pb-4 text-gray-600">{faq.answer}</div>
                 )}
               </div>
             ))}
@@ -355,16 +474,18 @@ const Home = () => {
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="text-center md:text-left mb-8 md:mb-0">
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
-                {localStorage.getItem('token') ? 'Continue Learning' : 'Ready to Start Learning?'}
+                {localStorage.getItem("token")
+                  ? "Continue Learning"
+                  : "Ready to Start Learning?"}
               </h2>
               <p className="text-blue-100">
-                {localStorage.getItem('token')
-                  ? 'Return to your dashboard to continue your journey'
-                  : 'Join thousands of happy students today!'}
+                {localStorage.getItem("token")
+                  ? "Return to your dashboard to continue your journey"
+                  : "Join thousands of happy students today!"}
               </p>
             </div>
             <div className="flex space-x-4">
-              {localStorage.getItem('token') ? (
+              {localStorage.getItem("token") ? (
                 <Link
                   to="/dashboard"
                   className="px-8 py-4 bg-white text-blue-600 rounded-lg hover:bg-blue-50 transition-colors font-semibold"
@@ -397,35 +518,121 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">About</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                About
+              </h3>
               <ul className="space-y-2">
-                <li><Link to="/about" className="text-gray-600 hover:text-blue-600">Our Story</Link></li>
-                <li><Link to="/team" className="text-gray-600 hover:text-blue-600">Team</Link></li>
-                <li><Link to="/careers" className="text-gray-600 hover:text-blue-600">Careers</Link></li>
+                <li>
+                  <Link
+                    to="/about"
+                    className="text-gray-600 hover:text-blue-600"
+                  >
+                    Our Story
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/team"
+                    className="text-gray-600 hover:text-blue-600"
+                  >
+                    Team
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/careers"
+                    className="text-gray-600 hover:text-blue-600"
+                  >
+                    Careers
+                  </Link>
+                </li>
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Resources</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                Resources
+              </h3>
               <ul className="space-y-2">
-                <li><Link to="/help" className="text-gray-600 hover:text-blue-600">Help Center</Link></li>
-                <li><Link to="/guides" className="text-gray-600 hover:text-blue-600">Guides</Link></li>
-                <li><Link to="/blog" className="text-gray-600 hover:text-blue-600">Blog</Link></li>
+                <li>
+                  <Link
+                    to="/help"
+                    className="text-gray-600 hover:text-blue-600"
+                  >
+                    Help Center
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/guides"
+                    className="text-gray-600 hover:text-blue-600"
+                  >
+                    Guides
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/blog"
+                    className="text-gray-600 hover:text-blue-600"
+                  >
+                    Blog
+                  </Link>
+                </li>
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Legal</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                Legal
+              </h3>
               <ul className="space-y-2">
-                <li><Link to="/privacy" className="text-gray-600 hover:text-blue-600">Privacy</Link></li>
-                <li><Link to="/terms" className="text-gray-600 hover:text-blue-600">Terms</Link></li>
-                <li><Link to="/security" className="text-gray-600 hover:text-blue-600">Security</Link></li>
+                <li>
+                  <Link
+                    to="/privacy"
+                    className="text-gray-600 hover:text-blue-600"
+                  >
+                    Privacy
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/terms"
+                    className="text-gray-600 hover:text-blue-600"
+                  >
+                    Terms
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/security"
+                    className="text-gray-600 hover:text-blue-600"
+                  >
+                    Security
+                  </Link>
+                </li>
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Connect</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                Connect
+              </h3>
               <ul className="space-y-2">
-                <li><Link to="/contact" className="text-gray-600 hover:text-blue-600">Contact</Link></li>
-                <li><a href="#" className="text-gray-600 hover:text-blue-600">Twitter</a></li>
-                <li><a href="#" className="text-gray-600 hover:text-blue-600">LinkedIn</a></li>
+                <li>
+                  <Link
+                    to="/contact"
+                    className="text-gray-600 hover:text-blue-600"
+                  >
+                    Contact
+                  </Link>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-600 hover:text-blue-600">
+                    Twitter
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-600 hover:text-blue-600">
+                    LinkedIn
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -436,7 +643,7 @@ const Home = () => {
           </div>
         </div>
       </footer>
-    </div >
+    </div>
   );
 };
 

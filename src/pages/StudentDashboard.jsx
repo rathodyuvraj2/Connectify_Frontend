@@ -938,16 +938,27 @@ const StudentDashboard = () => {
                         <Calendar className="w-4 h-4 mr-1" />
                         {new Date(project.startDate).toLocaleDateString()}
                       </span>
-                      {project.githubUrl && (
-                        <a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center text-blue-600 hover:text-blue-800"
-                        >
-                          <Github className="w-4 h-4 mr-1" />
-                          View Code
-                        </a>
+                      {project.githubUrl && project.liveUrl && (
+                        <div className="flex gap-5">
+                          <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center text-blue-600 hover:text-blue-800"
+                          >
+                            <Github className="w-4 h-4 mr-1" />
+                            View Code
+                          </a>
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center text-blue-600 hover:text-blue-800"
+                          >
+                            <Globe className="w-4 h-4 mr-1" />
+                            Live Demo
+                          </a>
+                        </div>
                       )}
                     </div>
                   </div>
@@ -1061,7 +1072,9 @@ const StudentDashboard = () => {
               <div className="flex justify-between items-center mb-4">
                 <div className="flex items-center">
                   <Megaphone className="w-5 h-5 text-blue-500 mr-2" />
-                  <h2 className="text-lg font-semibold">Recent Announcements</h2>
+                  <h2 className="text-lg font-semibold">
+                    Recent Announcements
+                  </h2>
                 </div>
                 <button
                   onClick={() => setShowAllAnnouncements(true)}
@@ -1082,7 +1095,10 @@ const StudentDashboard = () => {
                     <div className="flex items-center text-xs text-gray-500">
                       <Calendar className="h-3 w-3 mr-1" />
                       <span>
-                        {format(new Date(announcement.timestamp), "MMM dd, yyyy")}
+                        {format(
+                          new Date(announcement.timestamp),
+                          "MMM dd, yyyy"
+                        )}
                       </span>
                     </div>
                   </div>

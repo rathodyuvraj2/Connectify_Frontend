@@ -1107,27 +1107,65 @@ const AdminDashboard = () => {
     }
   };
 
-  const handleNominateProctor = async (id) => {
+  // const handleNominateProctor = async (id) => {
+  //   try {
+  //     const result = await Swal.fire({
+  //       title: "Nominate as Proctor?",
+  //       text: "This will grant proctor privileges to the faculty member",
+  //       icon: "question",
+  //       showCancelButton: true,
+  //       confirmButtonColor: "#3085d6",
+  //       cancelButtonColor: "#d33",
+  //       confirmButtonText: "Yes, nominate!",
+  //     });
+
+  //     if (result.isConfirmed) {
+  //       const response = await nominateProctor(id);
+  //       if (response.success) {
+  //         toast.success("Faculty nominated as proctor successfully");
+  //         fetchDashboardData();
+  //       }
+  //     }
+  //   } catch (error) {
+  //     toast.error("Failed to nominate proctor");
+  //   }
+  // };
+
+  const handleNominateProctor = async (id, isCurrentlyProctor) => {
     try {
       const result = await Swal.fire({
-        title: "Nominate as Proctor?",
-        text: "This will grant proctor privileges to the faculty member",
+        title: isCurrentlyProctor
+          ? "Demote from Proctor?"
+          : "Nominate as Proctor?",
+        text: isCurrentlyProctor
+          ? "This will remove proctor privileges from the faculty member"
+          : "This will grant proctor privileges to the faculty member",
         icon: "question",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, nominate!",
+        confirmButtonText: isCurrentlyProctor
+          ? "Yes, demote!"
+          : "Yes, nominate!",
       });
 
       if (result.isConfirmed) {
         const response = await nominateProctor(id);
         if (response.success) {
-          toast.success("Faculty nominated as proctor successfully");
+          toast.success(
+            isCurrentlyProctor
+              ? "Faculty demoted from proctor successfully"
+              : "Faculty nominated as proctor successfully"
+          );
           fetchDashboardData();
         }
       }
     } catch (error) {
-      toast.error("Failed to nominate proctor");
+      toast.error(
+        isCurrentlyProctor
+          ? "Failed to demote proctor"
+          : "Failed to nominate proctor"
+      );
     }
   };
 
@@ -1396,14 +1434,29 @@ const FacultyTable = ({ faculties, onDelete, onNominate, onEdit }) => (
                 >
                   <Edit3 className="h-5 w-5" />
                 </button>
-                {!faculty.isProctor && (
+                {/* {!faculty.isProctor && (
+                  // <button
+                  //   onClick={() => onNominate(faculty._id)}
+                  //   className="text-blue-600 hover:text-blue-900"
+                  // >
+                  //   <Shield className="h-5 w-5" />
+                  // </button> */}
                   <button
-                    onClick={() => onNominate(faculty._id)}
-                    className="text-blue-600 hover:text-blue-900"
+                    onClick={() => onNominate(faculty._id, faculty.isProctor)}
+                    className={`${
+                      faculty.isProctor
+                        ? "text-orange-600 hover:text-orange-900"
+                        : "text-blue-600 hover:text-blue-900"
+                    }`}
+                    title={
+                      faculty.isProctor
+                        ? "Demote from Proctor"
+                        : "Promote to Proctor"
+                    }
                   >
                     <Shield className="h-5 w-5" />
                   </button>
-                )}
+                {/* )} */}
                 <button
                   onClick={() => onDelete(faculty._id)}
                   className="text-red-600 hover:text-red-900"
@@ -1726,7 +1779,6 @@ const AddFacultyModal = ({ newFaculty, setNewFaculty, onClose, onSubmit }) => {
   );
 };
 
-
 const EditFacultyModal = ({ faculty, setFaculty, onClose, onSubmit }) => {
   const departments = [
     "Computer Science",
@@ -1736,7 +1788,7 @@ const EditFacultyModal = ({ faculty, setFaculty, onClose, onSubmit }) => {
     "Civil",
     "Electrical",
   ];
-  console.log("faculty details: ",faculty)
+  console.log("faculty details: ", faculty);
 
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">

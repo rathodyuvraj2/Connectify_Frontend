@@ -353,17 +353,58 @@ const ProfessorDashboard = () => {
     }
   };
 
+  // const handleMarkAttendance = async () => {
+  //   try {
+  //     if (
+  //       !selectedStudent ||
+  //       !attendanceData.status ||
+  //       !attendanceData.subject
+  //     ) {
+  //       toast.error("Please fill all attendance details");
+  //       return;
+  //     }
+
+  //     const result = await Swal.fire({
+  //       title: "Mark Attendance",
+  //       text: `Mark ${selectedStudent.fullName} as ${attendanceData.status}?`,
+  //       icon: "question",
+  //       showCancelButton: true,
+  //       confirmButtonColor: "#3085d6",
+  //       cancelButtonColor: "#d33",
+  //     });
+
+  //     if (result.isConfirmed) {
+  //       const response = await markAttendance({
+  //         studentId: selectedStudent._id,
+  //         ...attendanceData,
+  //         professorId: currentUser._id,
+  //       });
+
+  //       if (response.success) {
+  //         toast.success("Attendance marked successfully");
+  //         addActivity(`Marked attendance for ${selectedStudent.fullName}`);
+  //         updateStats("Attendance");
+  //         setAttendanceData({
+  //           status: "",
+  //           date: new Date().toISOString().split("T")[0],
+  //           subject: "",
+  //           semester: selectedSemester,
+  //         });
+  //         setSelectedStudent(null);
+  //       }
+  //     }
+  //   } catch (error) {
+  //     toast.error("Failed to mark attendance");
+  //   }
+  // };
+
   const handleMarkAttendance = async () => {
     try {
-      if (
-        !selectedStudent ||
-        !attendanceData.status ||
-        !attendanceData.subject
-      ) {
-        toast.error("Please fill all attendance details");
+      if (!selectedStudent || !attendanceData.status || !attendanceData.subject || !selectedSemester) {
+        toast.error("Please fill all attendance details including semester");
         return;
       }
-
+  
       const result = await Swal.fire({
         title: "Mark Attendance",
         text: `Mark ${selectedStudent.fullName} as ${attendanceData.status}?`,
@@ -371,15 +412,19 @@ const ProfessorDashboard = () => {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, mark it!",
       });
-
+  
       if (result.isConfirmed) {
-        const response = await markAttendance({
+        const attendancePayload = {
           studentId: selectedStudent._id,
           ...attendanceData,
+          semester: selectedSemester,  // Include semester in the payload
           professorId: currentUser._id,
-        });
-
+        };
+  
+        const response = await markAttendance(attendancePayload);
+  
         if (response.success) {
           toast.success("Attendance marked successfully");
           addActivity(`Marked attendance for ${selectedStudent.fullName}`);
@@ -395,8 +440,10 @@ const ProfessorDashboard = () => {
       }
     } catch (error) {
       toast.error("Failed to mark attendance");
+      console.error(error);
     }
   };
+  
 
   const handleAddMarks = async () => {
     try {
