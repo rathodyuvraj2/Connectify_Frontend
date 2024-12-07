@@ -708,3 +708,33 @@ export const updateProfilePhoto = async (imageUrl, userId, isStudent = true) => 
   });
   return response.json();
 };
+
+export const uploadFacultyPhoto = async (imageFile, facultyId) => {
+  const formData = new FormData();
+  formData.append('image', imageFile);
+  formData.append('facultyId', facultyId);
+
+  const response = await fetch(`${API_URL}/faculty/upload-profile-photo`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    },
+    body: formData
+  });
+  return response.json();
+};
+
+export const uploadStudentPhoto = async (imageFile, userId) => {
+  const formData = new FormData();
+  formData.append('image', imageFile);
+  formData.append('userId', userId);
+
+  const response = await fetch(`${API_URL}/users/upload-profile-photo`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    },
+    body: formData
+  });
+  return response.json();
+};

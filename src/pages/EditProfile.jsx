@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { getUserDetails, updateUserProfile } from "../services/api";
+import { getUserDetails, updateUserProfile, uploadStudentPhoto } from "../services/api";
 import { toast } from "react-hot-toast";
 import {
   Phone,
@@ -11,14 +11,15 @@ import {
   Award,
   Code,
   Activity,
-  Upload
+  Upload,
+  Camera
 } from "lucide-react";
 // Add to imports
 // import { Upload } from "lucide-react";
 // import { uploadImage, updateStudentProfilePhoto } from "../services/api";
 
 const EditProfile = () => {
-//   const navigate = useNavigate();
+  const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
   const [editableData, setEditableData] = useState({
     phoneNumber: "",
@@ -68,6 +69,21 @@ const EditProfile = () => {
     }
   };
 
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+  
+    try {
+      const result = await uploadStudentPhoto(file, userData._id);
+      if (result.success) {
+        setUserData({ ...userData, profilePicture: result.data.imageUrl });
+        toast.success('Profile photo updated successfully');
+      }
+    } catch (error) {
+      toast.error('Failed to update profile photo');
+    }
+  };
+
   if (!userData) return null;
 
     // Add this handler
@@ -98,34 +114,33 @@ const EditProfile = () => {
           {/* Header */}
           <div className="bg-gradient-to-r from-blue-600 to-blue-800 px-8 py-6">
             <div className="flex items-center space-x-4">
-              <img
+              {/* <img
                                 src={userData.profilePicture}
                                 alt={userData.fullName}
                                 className="w-20 h-20 rounded-full border-4 border-white"
-                            />
-              {/* // Add this in your JSX where the profile image is displayed */}
-              {/* <div className="relative group">
-                <img
-                  src={userData.profilePicture}
-                  alt={userData.fullName}
-                  className="w-20 h-20 rounded-full border-4 border-white object-cover"
-                />
-                <label className="absolute bottom-0 right-0 bg-blue-600 rounded-full p-2 cursor-pointer hover:bg-blue-700 transition-colors">
-                  {isUploading ? (
-                    <div className="animate-spin h-4 w-4 border-2 border-white rounded-full border-t-transparent" />
-                  ) : (
-                    <>
-                      <Upload className="h-4 w-4 text-white" />
-                      <input
-                        type="file"
-                        className="hidden"
-                        accept="image/*"
-                        onChange={handleImageUpload}
-                      />
-                    </>
-                  )}
-                </label>
-              </div> */}
+                            /> */}
+                            
+{/* // Replace image section with: */}
+<div className="relative group">
+  <input
+    type="file"
+    id="profileImage"
+    accept="image/*"
+    onChange={handleImageUpload}
+    className="hidden"
+  />
+  <label htmlFor="profileImage" className="cursor-pointer">
+    <img
+      src={userData.profilePicture}
+      alt={userData.fullName}
+      className="w-20 h-20 rounded-full border-4 border-white"
+    />
+    <div className="absolute inset-0 flex items-center justify-center rounded-full bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity">
+      <Camera className="w-6 h-6 text-white" />
+    </div>
+  </label>
+</div>
+
               <div className="text-white">
                 <h1 className="text-2xl font-bold">{userData.fullName}</h1>
                 <p className="opacity-90">

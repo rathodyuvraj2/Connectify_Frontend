@@ -132,7 +132,7 @@ const Home = () => {
             <div className="flex items-center">
               <BookOpen className="h-8 w-8 text-blue-600" />
               <span className="ml-2 text-xl font-bold text-gray-800">
-                EduLearn
+                Connectify
               </span>
             </div>
             {renderAuthButtons()}
@@ -196,7 +196,7 @@ const Home = () => {
       <div className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-            Why Choose EduLearn?
+            Why Choose Connectify?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -638,7 +638,7 @@ const Home = () => {
           </div>
           <div className="mt-8 pt-8 border-t border-gray-200">
             <p className="text-center text-gray-600">
-              © {new Date().getFullYear()} EduLearn. All rights reserved.
+              © {new Date().getFullYear()} Connectify. All rights reserved.
             </p>
           </div>
         </div>

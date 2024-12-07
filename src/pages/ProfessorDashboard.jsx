@@ -404,7 +404,7 @@
 //         toast.error("Please fill all attendance details including semester");
 //         return;
 //       }
-  
+
 //       const result = await Swal.fire({
 //         title: "Mark Attendance",
 //         text: `Mark ${selectedStudent.fullName} as ${attendanceData.status}?`,
@@ -414,7 +414,7 @@
 //         cancelButtonColor: "#d33",
 //         confirmButtonText: "Yes, mark it!",
 //       });
-  
+
 //       if (result.isConfirmed) {
 //         const attendancePayload = {
 //           studentId: selectedStudent._id,
@@ -422,9 +422,9 @@
 //           semester: selectedSemester,  // Include semester in the payload
 //           professorId: currentUser._id,
 //         };
-  
+
 //         const response = await markAttendance(attendancePayload);
-  
+
 //         if (response.success) {
 //           toast.success("Attendance marked successfully");
 //           addActivity(`Marked attendance for ${selectedStudent.fullName}`);
@@ -443,7 +443,6 @@
 //       console.error(error);
 //     }
 //   };
-  
 
 //   const handleAddMarks = async () => {
 //     try {
@@ -519,7 +518,6 @@
 //           ? [["Enrollment No", "Date","Subject", "Status"]]
 //           : [["Enrollment No", "Subject", "Internal 1", "Internal 2"]];
 
-
 //     const ws = XLSX.utils.aoa_to_sheet(template);
 //     const wb = XLSX.utils.book_new();
 //     XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
@@ -575,7 +573,7 @@
 //             <div className="flex items-start justify-between">
 //               <div className="flex items-center space-x-6">
 //                 <div
-//                   className="w-24 h-24 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 
+//                   className="w-24 h-24 rounded-full bg-gradient-to-r from-blue-500 to-blue-600
 //                               flex items-center justify-center text-white text-3xl font-bold"
 //                 >
 //                   {currentUser?.fullName?.charAt(0)}
@@ -712,7 +710,7 @@
 //               <select
 //                 value={selectedSemester}
 //                 onChange={(e) => setSelectedSemester(e.target.value)}
-//                 className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2 
+//                 className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2
 //                          focus:ring-blue-500 focus:border-transparent transition-all duration-200"
 //               >
 //                 <option value="">Choose Semester</option>
@@ -739,7 +737,7 @@
 //                         users.find((u) => u._id === e.target.value)
 //                       )
 //                     }
-//                     className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2 
+//                     className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2
 //                              focus:ring-blue-500 focus:border-transparent transition-all duration-200"
 //                   >
 //                     <option value="">Choose Student</option>
@@ -769,7 +767,7 @@
 //                               subject: e.target.value,
 //                             })
 //                           }
-//                           className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2 
+//                           className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2
 //                                    focus:ring-blue-500 focus:border-transparent"
 //                         >
 //                           <option value="">Select Subject</option>
@@ -790,7 +788,7 @@
 //                               status: e.target.value,
 //                             })
 //                           }
-//                           className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2 
+//                           className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2
 //                                    focus:ring-blue-500 focus:border-transparent"
 //                         >
 //                           <option value="">Select Status</option>
@@ -807,13 +805,13 @@
 //                               date: e.target.value,
 //                             })
 //                           }
-//                           className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2 
+//                           className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2
 //                                    focus:ring-blue-500 focus:border-transparent"
 //                         />
 
 //                         <button
 //                           onClick={handleMarkAttendance}
-//                           className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 
+//                           className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700
 //                                    transition-colors duration-200"
 //                         >
 //                           Mark Attendance
@@ -836,7 +834,7 @@
 //                               subject: e.target.value,
 //                             })
 //                           }
-//                           className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2 
+//                           className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2
 //                                    focus:ring-blue-500 focus:border-transparent"
 //                         >
 //                           <option value="">Select Subject</option>
@@ -859,7 +857,7 @@
 //                               internalExam1: e.target.value,
 //                             })
 //                           }
-//                           className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2 
+//                           className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2
 //                                    focus:ring-blue-500 focus:border-transparent"
 //                         />
 
@@ -873,13 +871,13 @@
 //                               internalExam2: e.target.value,
 //                             })
 //                           }
-//                           className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2 
+//                           className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2
 //                                    focus:ring-blue-500 focus:border-transparent"
 //                         />
 
 //                         <button
 //                           onClick={handleAddMarks}
-//                           className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 
+//                           className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700
 //                                    transition-colors duration-200"
 //                         >
 //                           Add Marks
@@ -920,7 +918,7 @@
 //                       type="file"
 //                       accept=".xlsx,.xls"
 //                       onChange={(e) => handleExcelUpload(e, "Attendance")}
-//                       className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 
+//                       className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2
 //                                focus:ring-blue-500 focus:border-transparent"
 //                     />
 //                   </div>
@@ -943,7 +941,7 @@
 //                       type="file"
 //                       accept=".xlsx,.xls"
 //                       onChange={(e) => handleExcelUpload(e, "Marks")}
-//                       className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 
+//                       className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2
 //                                focus:ring-blue-500 focus:border-transparent"
 //                     />
 //                   </div>
@@ -1107,7 +1105,6 @@
 
 // export default ProfessorDashboard;
 
-
 // --------------------------------------------------------------------------------
 
 import React, { useState, useEffect } from "react";
@@ -1135,7 +1132,7 @@ import {
   ChevronRight,
   X,
   MessageSquare,
-  Trash2
+  Trash2,
 } from "lucide-react";
 import {
   getFacultyDetails,
@@ -1147,7 +1144,7 @@ import {
   getAnnouncements,
   addRemark,
   updateRemark,
-  deleteRemark
+  deleteRemark,
 } from "../services/api";
 import { Toaster, toast } from "react-hot-toast";
 import Swal from "sweetalert2";
@@ -1156,7 +1153,10 @@ import { format } from "date-fns";
 
 const subjectsBySemester = {
   1: [
-    "MA101|Mathematics I", "PH101|Physics", "CH101|Chemistry", "CS101|Introduction to Programming"
+    "MA101|Mathematics I",
+    "PH101|Physics",
+    "CH101|Chemistry",
+    "CS101|Introduction to Programming",
   ],
   2: [
     "MA102|Mathematics II",
@@ -1164,7 +1164,12 @@ const subjectsBySemester = {
     "ME201|Mechanical Engineering",
     "CS102|Data Structures",
   ],
-  3: ["MA103|Mathematics III", "EC201|Electronics", "CS201|Digital Logic Design", "CS202|Algorithms"],
+  3: [
+    "MA103|Mathematics III",
+    "EC201|Electronics",
+    "CS201|Digital Logic Design",
+    "CS202|Algorithms",
+  ],
   4: [
     "MA104|Mathematics IV",
     "CS203|Computer Organization",
@@ -1208,12 +1213,12 @@ const ProfessorDashboard = () => {
     status: "",
     date: new Date().toISOString().split("T")[0],
     subject: "",
-    subjectCode:'',
+    subjectCode: "",
     semester: "",
   });
   const [marksData, setMarksData] = useState({
     subject: "",
-    subjectCode:'',
+    subjectCode: "",
     internalExam1: "",
     internalExam2: "",
     semester: "",
@@ -1240,7 +1245,7 @@ const ProfessorDashboard = () => {
     if (selectedSemester) {
       fetchStudentsBySemester(selectedSemester);
     }
-  }, [selectedSemester,refreshKey]);
+  }, [selectedSemester, refreshKey]);
 
   // Add this to your useEffect or create a new one
   useEffect(() => {
@@ -1263,86 +1268,78 @@ const ProfessorDashboard = () => {
       setError("Failed to fetch users");
     }
   };
-    const handleAddRemark = async () => {
-      try {
-        // const userId = localStorage.getItem('UserId');
-        const user = localStorage.getItem("user");
-        const userResponse = JSON.parse(user);
-        const userId = userResponse.id;
+  const handleAddRemark = async () => {
+    try {
+      // const userId = localStorage.getItem('UserId');
+      const user = localStorage.getItem("user");
+      const userResponse = JSON.parse(user);
+      const userId = userResponse.id;
 
-        const response = await addRemark({
-          studentId: selectedUser._id,
-          text: newRemark,
-          facultyId: userId,
-        });
-        if (response.success) {
-          setRemarks([...remarks, response.data]);
-          setNewRemark("");
-          setRefreshKey((oldKey) => oldKey + 1);
-        } else {
-          setError(response.message);
-        }
-      } catch (error) {
-        setError("Failed to add remark");
+      const response = await addRemark({
+        studentId: selectedUser._id,
+        text: newRemark,
+        facultyId: userId,
+      });
+      if (response.success) {
+        setRemarks([...remarks, response.data]);
+        setNewRemark("");
+        setRefreshKey((oldKey) => oldKey + 1);
+      } else {
+        setError(response.message);
       }
-    };
+    } catch (error) {
+      setError("Failed to add remark");
+    }
+  };
 
-    const handleEditRemark = async () => {
-      try {
-        const response = await updateRemark(editRemark._id, {
-          text: editRemark.text,
-        });
-        if (response.success) {
-          setRemarks(
-            remarks.map((remark) =>
-              remark._id === editRemark._id ? response.data : remark
-            )
-          );
-          setEditRemark(null);
-          setRefreshKey((oldKey) => oldKey + 1);
-        } else {
-          setError(response.message);
-        }
-      } catch (error) {
-        setError("Failed to update remark");
-      }
-    };
-
-    const handleDeleteRemark = async (remarkId) => {
-      try {
-        const result = await Swal.fire({
-          title: 'Are you sure?',
-          text: "You won't be able to revert this!",
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, delete it!'
-        });
-
-        if (result.isConfirmed) {
-          const response = await deleteRemark(remarkId);
-          if (response.success) {
-            setRemarks(remarks.filter(remark => remark._id !== remarkId));
-            setRefreshKey((oldKey) => oldKey + 1);
-            Swal.fire(
-              'Deleted!',
-              'Remark has been deleted.',
-              'success'
-            );
-          } else {
-            setError(response.message);
-          }
-        }
-      } catch (error) {
-        setError("Failed to delete remark");
-        Swal.fire(
-          'Error!',
-          'Failed to delete remark.',
-          'error'
+  const handleEditRemark = async () => {
+    try {
+      const response = await updateRemark(editRemark._id, {
+        text: editRemark.text,
+      });
+      if (response.success) {
+        setRemarks(
+          remarks.map((remark) =>
+            remark._id === editRemark._id ? response.data : remark
+          )
         );
+        setEditRemark(null);
+        setRefreshKey((oldKey) => oldKey + 1);
+      } else {
+        setError(response.message);
       }
-    };
+    } catch (error) {
+      setError("Failed to update remark");
+    }
+  };
+
+  const handleDeleteRemark = async (remarkId) => {
+    try {
+      const result = await Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      });
+
+      if (result.isConfirmed) {
+        const response = await deleteRemark(remarkId);
+        if (response.success) {
+          setRemarks(remarks.filter((remark) => remark._id !== remarkId));
+          setRefreshKey((oldKey) => oldKey + 1);
+          Swal.fire("Deleted!", "Remark has been deleted.", "success");
+        } else {
+          setError(response.message);
+        }
+      }
+    } catch (error) {
+      setError("Failed to delete remark");
+      Swal.fire("Error!", "Failed to delete remark.", "error");
+    }
+  };
 
   // Add this component for the announcements modal
   const AnnouncementsModal = () => (
@@ -1490,8 +1487,8 @@ const ProfessorDashboard = () => {
         cancelButtonColor: "#d33",
       });
 
-      attendanceData.subjectCode = attendanceData.subject.split('|')[0];
-      attendanceData.subject = attendanceData.subject.split('|')[1];
+      attendanceData.subjectCode = attendanceData.subject.split("|")[0];
+      attendanceData.subject = attendanceData.subject.split("|")[1];
       attendanceData.semester = selectedSemester;
       console.log(attendanceData);
       if (result.isConfirmed) {
@@ -1542,8 +1539,8 @@ const ProfessorDashboard = () => {
       });
 
       // console.log(marksData.subject);
-      marksData.subjectCode = marksData.subject.split('|')[0];
-      marksData.subject = marksData.subject.split('|')[1];
+      marksData.subjectCode = marksData.subject.split("|")[0];
+      marksData.subject = marksData.subject.split("|")[1];
       marksData.semester = selectedSemester;
 
       if (result.isConfirmed) {
@@ -1593,8 +1590,26 @@ const ProfessorDashboard = () => {
   const downloadTemplate = (type) => {
     const template =
       type === "attendance"
-        ? [["Enrollment No", "Date", "Subject", "SubjectCode", "semester", "Status"]]
-        : [["Enrollment No", "Subject", "SubjectCode","semester", "Internal Exam 1", "Internal Exam 2"]];
+        ? [
+            [
+              "Enrollment No",
+              "Date",
+              "Subject",
+              "SubjectCode",
+              "semester",
+              "Status",
+            ],
+          ]
+        : [
+            [
+              "Enrollment No",
+              "Subject",
+              "SubjectCode",
+              "semester",
+              "Internal Exam 1",
+              "Internal Exam 2",
+            ],
+          ];
 
     const ws = XLSX.utils.aoa_to_sheet(template);
     const wb = XLSX.utils.book_new();
@@ -1650,11 +1665,12 @@ const ProfessorDashboard = () => {
           <div className="flex-1">
             <div className="flex items-start justify-between">
               <div className="flex items-center space-x-6">
-                <div
-                  className="w-24 h-24 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 
-                              flex items-center justify-center text-white text-3xl font-bold"
-                >
-                  {currentUser?.fullName?.charAt(0)}
+                <div className="w-24 h-24 rounded-full overflow-hidden">
+                  <img
+                    src={currentUser?.profileImage}
+                    alt={currentUser?.fullName}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div>
                   <h1 className="text-2xl font-bold text-gray-900">
@@ -2154,18 +2170,18 @@ const ProfessorDashboard = () => {
                       </span>
                     </div>
                     <div className="flex gap-5">
-                    <button
-                      onClick={() => setEditRemark(remark)}
-                      className="text-purple-600 hover:text-purple-700"
-                    >
-                      <Edit3 className="h-4 w-4" />
-                    </button>
-                    <button
-                      onClick={() => handleDeleteRemark(remark._id)}
-                      className="text-red-600 hover:text-red-700"
-                    >
-                      <Trash2 className="h-4 w-4" />
-                    </button>
+                      <button
+                        onClick={() => setEditRemark(remark)}
+                        className="text-purple-600 hover:text-purple-700"
+                      >
+                        <Edit3 className="h-4 w-4" />
+                      </button>
+                      <button
+                        onClick={() => handleDeleteRemark(remark._id)}
+                        className="text-red-600 hover:text-red-700"
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </button>
                     </div>
                   </div>
                 </div>
